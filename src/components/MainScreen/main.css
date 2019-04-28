@@ -1,0 +1,15 @@
+div{
+    margin: 0;
+}
+input:focus, textarea {
+    outline: none !important;
+}
+.body{
+    /* display: inline-block; */
+    width: 100vw;
+    height: 75vh;
+}
+label{
+    font-size: 3vh;
+    margin: 0;
+}

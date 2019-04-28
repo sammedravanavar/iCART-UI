@@ -1,0 +1,38 @@
+.recommender {
+    vertical-align: middle;
+    width: 100vw;
+    height: 20vh;
+    background-color: #162231;
+}
+.item {
+    margin: 0;
+    width: 25%;
+    height: 100%;
+    float: left;
+    overflow: hidden;
+}
+.details{
+    padding: 5px;
+    color: #ffffff;
+    margin: 0;
+    width: auto;
+    height: 100%;
+    float: left;
+    /* overflow: auto; */
+}
+.item img{
+    background-color: #DAE8E8;
+    margin: 0;
+    float: left;
+    margin: 1px;
+    width: 40%;
+    height: 100%;
+    opacity: 0.9;
+}
+.label { 
+    display:block;
+    width:14vw;
+    word-wrap:break-word;
+    float: left;
+    padding: 0;
+}
