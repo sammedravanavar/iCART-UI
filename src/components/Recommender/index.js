@@ -20,7 +20,7 @@ class Recommender extends React.Component {
         clearInterval(this.interval);
     }    
 
-    getItemsIds = () => {
+    getItems = () => {
         if(this.props.recommends.length && this.props.products.length){
             let recommendList = this.props.recommends;
             let allItems = this.props.products;
@@ -30,7 +30,13 @@ class Recommender extends React.Component {
             if(recommendList.length<=4)
                 itemsToShow = recommendList;
             else itemsToShow =  recommendList.slice(count%(length-3),count%(length-3)+4)
-            return allItems.filter(item=>itemsToShow.includes(item._id))
+            Array(count).fill(count).forEach(_=>{
+                itemsToShow.unshift(itemsToShow.pop())
+            })
+            return itemsToShow.map(item=>{
+                return allItems.filter(allitem=>allitem._id===item)[0];
+            })
+            // return allItems.filter(item=>itemsToShow.includes(item._id))
         }
         return [];
     }
@@ -41,7 +47,7 @@ class Recommender extends React.Component {
     }
     
     render() {
-        const items = this.getItemsIds();
+        const items = this.getItems.bind(this)();
       return (
          <div className="recommender">
                 {items.length <= 0
