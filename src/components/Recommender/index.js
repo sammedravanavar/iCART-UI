@@ -5,14 +5,14 @@ class Recommender extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-           count: 1
+           count: 0
         }
      }
      
     componentDidMount() {
         this.interval = setInterval(() => this.setState({
             time: Date.now(),
-            count: this.state.count+1 
+            count: this.props.recommends.length ? this.state.count+1 : 0
         }), 5000);
     }
 
@@ -20,38 +20,34 @@ class Recommender extends React.Component {
         clearInterval(this.interval);
     }    
 
-    getUniqueIds = () => {
-        var limit = 4, lower_bound = 1, upper_bound = 84, unique_random_numbers = [];
-        while (unique_random_numbers.length < limit) {
-            var random_number = Math.floor(Math.random()*(upper_bound - lower_bound) + lower_bound);
-            if (unique_random_numbers.indexOf(random_number) === -1) { 
-                unique_random_numbers.push( random_number );
-            }
-        }
-        return unique_random_numbers
-    }
-
     getItemsIds = () => {
-        const items = this.props.recommends;
-        const {count} = this.state;
-        const length = items.length;
-        if(items.length<=4) return items;
-        // console.log(items.slice(count%(length-3),count%(length-3)+4))
-        return items.slice(count%(length-3),count%(length-3)+4)
+        if(this.props.recommends.length && this.props.products.length){
+            let recommendList = this.props.recommends;
+            let allItems = this.props.products;
+            let {count} = this.state;
+            let length = recommendList.length;
+            let itemsToShow = [];
+            if(recommendList.length<=4)
+                itemsToShow = recommendList;
+            else itemsToShow =  recommendList.slice(count%(length-3),count%(length-3)+4)
+            return allItems.filter(item=>itemsToShow.includes(item._id))
+        }
+        return [];
     }
 
+    addToCart = (item) => {
+        if(!this.props.cart.includes(item) && (item))
+            this.props.AddToCart.bind(null)(item)
+    }
+    
     render() {
-        const data = this.props.products;
-        const y = this.getItemsIds();
-        // const y = this.getUniqueIds()
+        const items = this.getItemsIds();
       return (
          <div className="recommender">
-                {data.length <= 0
+                {items.length <= 0
                     ?"NO DB ENTRIES YET"
-                    :data.filter((e)=>{
-                        return y.includes(e._id)
-                     }).map(item => (
-                     <div className="item" key={item._id}>
+                    :items.map(item => (
+                     <div className="item" key={item._id} onClick={this.addToCart.bind(this,item.name)}>
                         <img style={{objectFit: "contain"}}src={require('../../images/'+item._id+'.png')} alt="hs"></img>
                         <div className="details">
                             <label className="label">{item.name}</label><br></br>

@@ -60,8 +60,15 @@ class Graph extends React.Component {
         //     ctx.fillRect(nodes[i].x, nodes[i].y, 15, 15);   //nodes
         // }
         if(this.state.location>=0){
-            ctx.fillStyle = "#0000FF";
-            ctx.fillRect(nodes[this.state.location].x-7.5, nodes[this.state.location].y-7.5, 15, 15);   //current node
+            // ctx.fillStyle = "#0000FF";
+            // ctx.fillRect(nodes[this.state.location].x-7.5, nodes[this.state.location].y-7.5, 15, 15);   //current node
+            var cart = new Image();
+            cart.src = require('../../images/cart.png');
+            cart.onload =  () => {
+                // canvas.width=1200;
+                // canvas.height=1200;
+                ctx.drawImage(cart, 0, 0, cart.width*50, cart.height*25, nodes[this.state.location].x-15, nodes[this.state.location].y-15, canvas.width, canvas.height);
+            }
         }
         // ctx.fillStyle = "#000000";
         // for(i=0; i<3; i++){
