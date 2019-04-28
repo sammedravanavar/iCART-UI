@@ -103,7 +103,7 @@ class SwipeableListItem extends React.Component {
 
   onMouseMove(evt) {
     const left = evt.clientX - this.dragStartX;
-    if (left < 100 && left > -100) {
+    if (left < 200 && left > -200) {
       this.left = left;
     }
     // if (left < 0) {
@@ -166,14 +166,14 @@ class SwipeableListItem extends React.Component {
             {this.props.background ? (
               this.props.background
             ) : (
-              <span>Delete</span>
+              <span>Remove</span>
             )}
           </div>
           <div ref={div => (this.background = div)} className="Background1">
             {this.props.background ? (
               this.props.background
             ) : (
-              <span>Del</span>
+              <span>Add</span>
             )}
           </div>
           <div

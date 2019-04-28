@@ -55,7 +55,6 @@ class Chatbot extends React.Component {
 
    render() {
       return (
-         <div className="sidebar" id="mySidebar">
          <div className="chatbot">
             {/* <Datalist getCart = {this.props.getCart} getData = {this.props.getData}/> */}
             <div className="chatbotHeader">Need any Help?</div>
@@ -84,7 +83,6 @@ class Chatbot extends React.Component {
                   // baseClass = {"keyboard"}
                />
             </div>
-         </div>
          </div>
       );
    }

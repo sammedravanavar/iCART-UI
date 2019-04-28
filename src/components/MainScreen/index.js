@@ -10,11 +10,17 @@ class App extends Component {
    render() {
     return (
       <div>
-        <Header/>
+        <Header refs={this.refs}/>
         <div className="body">
-          <Chatbot />
-          <Graph {...this.props} />
-          <CartList {...this.props} />
+          <div className="sidebar" ref="chatbot">
+            <Chatbot />
+          </div>
+          <div className="sidebar" ref="cartlist">
+            <CartList {...this.props} />          
+          </div>
+          <div className="layout" ref="graph">
+            <Graph {...this.props} />
+          </div>
         </div>
         <Recommender {...this.props} />
       </div>

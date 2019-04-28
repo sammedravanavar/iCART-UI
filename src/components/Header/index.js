@@ -6,35 +6,69 @@ class Header extends React.Component {
    constructor(props){
       super(props);
       this.state = {
-         toggle: false
+         toggleCart: false,
+         toggleChat: false
       }
    }
-   openNav = () => {
-      if(this.state.toggle){
-         console.log(document.getElementById("mySidebar").style.width)
+   openChat = () => {
+      if(this.state.toggleChat){
          this.setState({
-            toggle: false
+            toggleChat: false
          })
-         document.getElementById("mySidebar").style.width = "0";
+         this.props.refs.chatbot.style.width = '0';
+         this.props.refs.graph.style.width = '100vw';
+      }
+      else if(!this.state.toggleCart){
+         this.setState({
+            toggleChat: true
+         })
+         this.props.refs.graph.style.width = '70vw';
+         this.props.refs.chatbot.style.width = '30vw';
       }
       else{
          this.setState({
-            toggle: true
+            toggleChat: true,
+            toggleCart: false
          })
-         console.log("hide")
-         document.getElementById("mySidebar").style.width = "30vw";
+         this.props.refs.cartlist.style.width = '0';
+         this.props.refs.chatbot.style.width = '30vw';
+      }
+    }
+    openCart = () => {
+      if(this.state.toggleCart){
+         this.setState({
+            toggleCart: false
+         })
+         this.props.refs.cartlist.style.width = '0';
+         this.props.refs.graph.style.width = '100vw';
+      }
+      else if(!this.state.toggleChat){
+         this.setState({
+            toggleCart: true
+         })
+         this.props.refs.graph.style.width = '70vw';
+         this.props.refs.cartlist.style.width = '30vw';
+      }
+      else{
+         this.setState({
+            toggleChat: false,
+            toggleCart: true
+         })
+         this.props.refs.chatbot.style.width = '0';
+         this.props.refs.cartlist.style.width = '30vw';
       }
     }
    render() {
-      let icon = <IoIosChatbubbles className="icon" size="3vh" onClick={this.openNav.bind(this)}/>
-      if(this.state.toggle)
-         icon = <IoIosCart className="icon" size="3vh" onClick={this.openNav.bind(this)}/>
+      let chat = <IoIosChatbubbles className="icon" size="3vh" onClick={this.openChat.bind(this)}/>
+      let cart = <IoIosCart className="icon" size="3vh" onClick={this.openCart.bind(this)}/>
       return (
          <div>
-            {icon}
+            {chat}
+            {cart}
             <div className="header">
                <label>iCart</label>
             </div>
+            {/* {icon2} */}
          </div>
       );
    }

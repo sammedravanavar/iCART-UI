@@ -1,7 +1,7 @@
 .graph {
     float: right;
     display: block;
-    width: 70vw;
+    width: 100%;
     height: inherit;
     background-size: 100% 100%;
     background-color: grey;
