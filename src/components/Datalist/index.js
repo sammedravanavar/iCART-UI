@@ -24,7 +24,7 @@ class Datalist extends React.Component {
       })
       if(!this.props.cart.includes(item) && (item))
          this.props.AddToCart.bind(null)(item)
-      // this.keyboard.current.setInput("");
+      this.keyboard.current.setInput("");
    }
    
    showKeyboard(){

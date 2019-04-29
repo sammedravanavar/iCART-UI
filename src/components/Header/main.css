@@ -14,10 +14,10 @@
     color: #ffffff;
     size: 3vh;
 }
-.icon{
-    float: left;
+.logoff{
+    float: right;
     margin: 0.4vw;
-    margin-left: 1vw;
+    margin-right: 1vw;
     color: #ffffff;
     size: 3vh;
 }

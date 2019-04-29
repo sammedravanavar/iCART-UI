@@ -1,5 +1,5 @@
 import React from 'react';
-import {IoIosChatbubbles, IoIosCart} from 'react-icons/io'
+import {IoIosChatbubbles, IoIosCart, IoIosPower} from 'react-icons/io'
 import './main.css'
 
 class Header extends React.Component {
@@ -61,10 +61,12 @@ class Header extends React.Component {
    render() {
       let chat = <IoIosChatbubbles className="icon" size="3vh" onClick={this.openChat.bind(this)}/>
       let cart = <IoIosCart className="icon" size="3vh" onClick={this.openCart.bind(this)}/>
+      let logout = <IoIosPower className="logoff" size="3vh" onClick={this.props.Logoff.bind(null)}/>
       return (
          <div>
             {chat}
             {cart}
+            {logout}
             <div className="header">
                <label>iCart</label>
             </div>

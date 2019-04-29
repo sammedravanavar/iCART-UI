@@ -1,6 +1,6 @@
 import React from "react";
 import "./main.css"
-import Divider from '@material-ui/core/Divider';
+// import Divider from '@material-ui/core/Divider';
 
 class SwipeableListItem extends React.Component {
   // DOM Refs

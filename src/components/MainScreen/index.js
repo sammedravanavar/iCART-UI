@@ -8,9 +8,10 @@ import Recommender from '../Recommender';
 
 class App extends Component {
    render() {
+    // console.log('rendering mainscreen')
     return (
       <div>
-        <Header refs={this.refs}/>
+        <Header refs={this.refs} {...this.props}/>
         <div className="body">
           <div className="sidebar" ref="chatbot">
             <Chatbot />

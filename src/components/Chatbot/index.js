@@ -80,6 +80,7 @@ class Chatbot extends React.Component {
                   ref={this.keyboard}
                   getInput={this.getInput}
                   inputName={"input"}
+                  input= {this.state.input}
                   // baseClass = {"keyboard"}
                />
             </div>

@@ -38,6 +38,10 @@ export function SubmitNumber(number){
         })
     }
 }
+
+export function Logoff(){
+    return {type:"LOG_OFF"}
+}
 export function AddToCart(product){
     return {type:"ADD_TO_CART",product}
 }
